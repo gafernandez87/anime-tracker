@@ -1,0 +1,37 @@
+# Node modules
+/node_modules/
+
+# Build output
+/dist/
+/out-tsc/
+
+# Angular specific
+/.angular/cache/
+/.angular/
+
+# Environment files
+/src/environments/environment*.ts
+
+# IDEs and editors
+/.idea/
+/.vscode/
+/*.sublime-project
+/*.sublime-workspace
+
+# Compiled files
+*.js
+*.js.map
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# NPM/Yarn files
+package-lock.json
+yarn.lock
+
+# Others
+npm-debug.log*

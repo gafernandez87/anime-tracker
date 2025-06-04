@@ -1,0 +1,38 @@
+<header class="header">
+  <div class="header-content">
+    <a routerLink="/" class="logo">{{ 'app.title' | translate }}</a>
+    
+    <div class="right-section">
+      <div class="language-selector">
+        <button 
+          class="language-btn" 
+          [class.active]="currentLang === 'es'"
+          (click)="switchLanguage('es')" 
+          aria-label="Español">
+          ES
+        </button>
+        <button 
+          class="language-btn" 
+          [class.active]="currentLang === 'en'"
+          (click)="switchLanguage('en')" 
+          aria-label="English">
+          EN
+        </button>
+      </div>
+      <ng-container *ngIf="currentUser; else loginButton">
+        <div class="user-info">
+          <span class="username">{{ currentUser.username }}</span>
+          <button class="logout-btn" (click)="logout()">
+            {{ 'header.logout' | translate }}
+          </button>
+        </div>
+      </ng-container>
+      
+      <ng-template #loginButton>
+        <a routerLink="/login" class="login-btn">
+          {{ 'header.login' | translate }}
+        </a>
+      </ng-template>
+    </div>
+  </div>
+</header> 

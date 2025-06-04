@@ -1,0 +1,78 @@
+<div class="signup-container">
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+    <h2>{{ 'signup.title' | translate }}</h2>
+
+    <div class="form-group">
+      <label for="username">{{ 'signup.username' | translate }}</label>
+      <input
+        type="text"
+        id="username"
+        formControlName="username"
+        [placeholder]="'signup.username.placeholder' | translate"
+        [class.invalid]="username?.invalid && username?.touched"
+      >
+      <div class="error-message" *ngIf="username?.invalid && username?.touched">
+        <span *ngIf="username?.errors?.['required']">{{ 'signup.error.username.required' | translate }}</span>
+        <span *ngIf="username?.errors?.['minlength']">{{ 'signup.error.username.minlength' | translate }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">{{ 'signup.email' | translate }}</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        [placeholder]="'signup.email.placeholder' | translate"
+        [class.invalid]="email?.invalid && email?.touched"
+      >
+      <div class="error-message" *ngIf="email?.invalid && email?.touched">
+        <span *ngIf="email?.errors?.['required']">{{ 'signup.error.email.required' | translate }}</span>
+        <span *ngIf="email?.errors?.['email']">{{ 'signup.error.email.invalid' | translate }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">{{ 'signup.password' | translate }}</label>
+      <div class="password-input-container">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          id="password"
+          formControlName="password"
+          [placeholder]="'signup.password.placeholder' | translate"
+          [class.invalid]="password?.invalid && password?.touched"
+        >
+        <button 
+          type="button" 
+          class="toggle-password"
+          (click)="togglePasswordVisibility()"
+          [attr.aria-label]="showPassword ? 'signup.password.hide' : 'signup.password.show' | translate"
+        >
+          <i class="fas" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"></i>
+        </button>
+      </div>
+      <div class="error-message" *ngIf="password?.invalid && password?.touched">
+        <span *ngIf="password?.errors?.['required']">{{ 'signup.error.password.required' | translate }}</span>
+        <span *ngIf="password?.errors?.['minlength']">{{ 'signup.error.password.minlength' | translate }}</span>
+      </div>
+    </div>
+
+    <div class="error-message" *ngIf="error">
+      {{ error | translate }}
+    </div>
+
+    <button 
+      type="submit" 
+      [disabled]="signupForm.invalid || loading"
+      class="signup-button"
+    >
+      <span *ngIf="!loading">{{ 'signup.submit' | translate }}</span>
+      <span *ngIf="loading">{{ 'signup.loading' | translate }}</span>
+    </button>
+
+    <div class="login-link">
+      {{ 'signup.have.account' | translate }}
+      <a routerLink="/login">{{ 'signup.login.link' | translate }}</a>
+    </div>
+  </form>
+</div> 

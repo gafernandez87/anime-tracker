@@ -1,0 +1,45 @@
+<main class="main-content">
+  <app-filters (filtersChanged)="onFiltersChanged($event)"></app-filters>
+  
+  <div *ngIf="loading && !animes.length" class="loading-initial">
+    <app-spinner [overlay]="true"></app-spinner>
+  </div>
+
+  <div *ngIf="error" class="error-container">
+    <i class="fas fa-exclamation-circle"></i>
+    <p>{{ 'home.error' | translate }}</p>
+    <button (click)="loadAnimes()" class="retry-button">
+      <i class="fas fa-redo"></i>
+      {{ 'home.retry' | translate }}
+    </button>
+  </div>
+
+  <div class="anime-grid" *ngIf="animes.length">
+    <div class="anime-card" *ngFor="let anime of animes">
+      <a [routerLink]="['/anime', anime.id]" class="anime-link">
+        <img [src]="anime.poster" [alt]="anime.title" class="poster" loading="lazy">
+        <div class="anime-info">
+          <h3>{{ anime.title }}</h3>
+          <div class="meta-info">
+            <span class="episodes" *ngIf="anime.episode_count">
+              <i class="fas fa-tv"></i>
+              {{ anime.episode_count }} {{ 'home.episodes' | translate }}
+            </span>
+            <span class="rating" *ngIf="anime.average_rating">
+              <i class="fas fa-star"></i>
+              {{ parseFloat(anime.average_rating) | number:'1.1-1' }}
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="loading-more" *ngIf="loading && animes.length">
+    <app-spinner></app-spinner>
+  </div>
+
+  <div class="no-more-results" *ngIf="!hasMorePages && animes.length && !loading">
+    <p>{{ 'home.no.more' | translate }}</p>
+  </div>
+</main>   

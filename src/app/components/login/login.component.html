@@ -1,0 +1,63 @@
+<div class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+    <h2>{{ 'login.title' | translate }}</h2>
+
+    <div class="form-group">
+      <label for="email">{{ 'login.email' | translate }}</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        [placeholder]="'login.email.placeholder' | translate"
+        [class.invalid]="email?.invalid && email?.touched"
+      >
+      <div class="error-message" *ngIf="email?.invalid && email?.touched">
+        <span *ngIf="email?.errors?.['required']">{{ 'login.error.email.required' | translate }}</span>
+        <span *ngIf="email?.errors?.['email']">{{ 'login.error.email.invalid' | translate }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">{{ 'login.password' | translate }}</label>
+      <div class="password-input-container">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          id="password"
+          formControlName="password"
+          [placeholder]="'login.password.placeholder' | translate"
+          [class.invalid]="password?.invalid && password?.touched"
+        >
+        <button 
+          type="button" 
+          class="toggle-password"
+          (click)="togglePasswordVisibility()"
+          [attr.aria-label]="showPassword ? 'login.password.hide' : 'login.password.show' | translate"
+        >
+          <i class="fas" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"></i>
+        </button>
+      </div>
+      <div class="error-message" *ngIf="password?.invalid && password?.touched">
+        <span *ngIf="password?.errors?.['required']">{{ 'login.error.password.required' | translate }}</span>
+        <span *ngIf="password?.errors?.['minlength']">{{ 'login.error.password.minlength' | translate }}</span>
+      </div>
+    </div>
+
+    <div class="error-message" *ngIf="error">
+      {{ error | translate }}
+    </div>
+
+    <button 
+      type="submit" 
+      [disabled]="loginForm.invalid || loading"
+      class="login-button"
+    >
+      <span *ngIf="!loading">{{ 'login.submit' | translate }}</span>
+      <span *ngIf="loading">{{ 'login.loading' | translate }}</span>
+    </button>
+
+    <div class="signup-link">
+      {{ 'login.no.account' | translate }}
+      <a routerLink="/signup">{{ 'login.signup.link' | translate }}</a>
+    </div>
+  </form>
+</div> 

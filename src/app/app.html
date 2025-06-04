@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<main class="main-content">
+  <div class="anime-grid" *ngIf="!loading && !error">
+    <div class="anime-card" *ngFor="let anime of animes">
+      <img [src]="anime.attributes.posterImage.medium" [alt]="anime.attributes.canonicalTitle" class="anime-poster">
+      <div class="anime-info">
+        <h3>{{ anime.attributes.canonicalTitle }}</h3>
+        <div class="anime-details">
+          <span class="rating" *ngIf="anime.attributes.averageRating">
+            ⭐ {{ (parseFloat(anime.attributes.averageRating) / 20).toFixed(1) }}/5
+          </span>
+          <span class="episodes" *ngIf="anime.attributes.episodeCount">
+            {{ anime.attributes.episodeCount }} episodes
+          </span>
+        </div>
+        <p class="synopsis">{{ anime.attributes.synopsis | slice:0:150 }}...</p>
+        <button class="add-to-list">Add to Watched List</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading" *ngIf="loading">
+    <p>Loading animes...</p>
+  </div>
+
+  <div class="error" *ngIf="error">
+    <p>{{ error }}</p>
+    <button (click)="loadAnimes()">Try Again</button>
+  </div>
+</main>
+
+<router-outlet />

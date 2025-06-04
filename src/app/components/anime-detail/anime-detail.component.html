@@ -1,0 +1,59 @@
+<div class="anime-detail" *ngIf="anime">
+  <div class="header">
+    <button class="back-button" [routerLink]="['/']">
+      {{ 'detail.back' | translate }}
+    </button>
+  </div>
+
+  <div class="content" *ngIf="!loading && !error">
+    <div class="main-info">
+      <div class="poster">
+        <img [src]="anime.poster" [alt]="anime.title" class="poster-image">
+      </div>
+      <div class="info">
+        <h1>{{ anime.title }}</h1>
+        <h2 *ngIf="anime.title_jp">{{ anime.title_jp }}</h2>
+        
+        <div class="meta-info">
+          <div class="info-item" *ngIf="anime.average_rating">
+            <span class="label">{{ 'detail.rating' | translate }}</span>
+            <span class="value">★ {{ parseFloat(anime.average_rating) | number:'1.1-1' }}</span>
+          </div>
+          
+          <div class="info-item" *ngIf="anime.episode_count">
+            <span class="label">{{ 'detail.episodes' | translate }}</span>
+            <span class="value">{{ anime.episode_count }}</span>
+          </div>
+          
+          <div class="info-item">
+            <span class="label">{{ 'detail.status' | translate }}</span>
+            <span class="value">{{ anime.status }}</span>
+          </div>
+          
+          <div class="info-item" *ngIf="anime.start_date">
+            <span class="label">{{ 'detail.aired' | translate }}</span>
+            <span class="value">
+              {{ anime.start_date | date }}
+              <ng-container *ngIf="anime.end_date">
+                {{ 'detail.to' | translate }} {{ anime.end_date | date }}
+              </ng-container>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="synopsis" *ngIf="anime.description">
+      <h3>{{ 'detail.synopsis' | translate }}</h3>
+      <p>{{ anime.description }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    {{ 'detail.loading' | translate }}
+  </div>
+
+  <div *ngIf="error" class="error">
+    {{ 'detail.error' | translate }}
+  </div>
+</div> 
