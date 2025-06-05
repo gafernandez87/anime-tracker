@@ -38,13 +38,17 @@ export class AnimeService {
   }
 
   getWatchedAnimes(): Observable<Anime[]> {
-    return this.http.get<Anime[]>(`${this.API_URL}/anime/me/watched`);
+    return this.http.get<Anime[]>(`${this.API_URL}/anime/watched`);
   }
 
   searchAnimes(query: string): Observable<Anime | null> {
     return this.getAnimes(1, { search: query }).pipe(
       map(response => response.data.length > 0 ? response.data[0] : null)
     );
+  }
+
+  getUserWatchedAnimes(username: string) {
+    return this.http.get<Anime[]>(`${this.API_URL}/anime/${username}/watched`);
   }
 
   markAnimeAsWatched(animeId: number): Observable<Anime> {

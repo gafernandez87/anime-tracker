@@ -100,6 +100,9 @@ export class TranslationService {
       // Anime card
       'add.wathced': 'Mark as watched',
       'remove.watched': 'Remove from watched',
+
+      // Watched Component
+      'watched.public.list': 'Make list public',
     },
     es: {
       'loading': 'Cargando...',
@@ -185,6 +188,9 @@ export class TranslationService {
       // Anime card
       'add.watched': 'Marcar como visto',
       'remove.watched': 'Eliminar de vistos',
+
+      // Watched Component
+      'watched.public.list': 'Hacer lista pública',
     }
   };
 

@@ -6,6 +6,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { WatchedComponent } from './components/watched/watched.component';
 import { AuthGuard } from './interceptors/auth.guard';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PublicWatchedComponent } from './components/public-watched/public-watched.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,10 @@ export const routes: Routes = [
   {
     path: 'anime/:id',
     component: AnimeDetailComponent
+  },
+  {
+    path: ':username/watched',
+    component: PublicWatchedComponent
   },
   { path: '**', redirectTo: '/home' }
 ];

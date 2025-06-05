@@ -14,6 +14,7 @@ export interface User {
   created_at: string;
   username: string;
   email: string;
+  watched_public: boolean;
 }
 
 export interface LoginResponse {
