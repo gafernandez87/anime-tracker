@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { AnimeService } from '../../services/anime.service';
 import { Anime } from '../../interfaces/anime.interface';
@@ -8,34 +7,44 @@ import { AnimeFilters } from '../../interfaces/filters';
 import { FiltersComponent } from '../filters/filters.component';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
+import { AnimeCardComponent } from "../anime-card/anime-card.component";
+import { AuthService } from '../../services/auth.service';
+
+
+type AnimeFav = Anime & { isFavorite: boolean; };
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
+    AnimeCardComponent,
     FiltersComponent,
     TranslatePipe,
-    SpinnerComponent
-  ],
+    SpinnerComponent,
+    AnimeCardComponent
+],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  animes: Anime[] = [];
+  animes: AnimeFav[] = [];
   loading = false;
   error = false;
   currentPage = 1;
   hasMorePages = true;
+
   private destroy$ = new Subject<void>();
   private currentFilters: AnimeFilters = {};
   private scrollThreshold = 200; // píxeles antes del final para cargar más
 
-  constructor(private animeService: AnimeService) {}
+  constructor(private authService: AuthService, private animeService: AnimeService) {}
 
   ngOnInit() {
     this.loadAnimes();
+    if(this.authService.isAuthenticated()) {
+      this.loadFavoriteAnimes();
+    }
   }
 
   ngOnDestroy() {
@@ -69,15 +78,31 @@ export class HomeComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
+          const pageData = response.data.map(anime => ({ ...anime, isFavorite: false } as AnimeFav));
           this.animes = this.currentPage === 1 
-            ? response.data 
-            : [...this.animes, ...response.data];
+            ? pageData
+            : [...this.animes, ...pageData];
           this.hasMorePages = this.currentPage < response.pagination.totalPages;
           this.loading = false;
         },
         error: () => {
           this.error = true;
           this.loading = false;
+        }
+      });
+  }
+
+  private loadFavoriteAnimes() {
+    this.animeService.getFavoriteAnimes()
+      .subscribe({
+        next: (favorites: Anime[]) => {
+          this.animes = this.animes.map(anime => {
+            const isFavorite = favorites.some(fav => fav.id === anime.id);
+            return { ...anime, isFavorite };
+          });
+        },
+        error: (error) => {
+          console.error('Error loading favorite animes:', error);
         }
       });
   }

@@ -16,6 +16,9 @@ export class TranslationService {
 
   private translations: { [key in Language]: Translations } = {
     en: {
+      // General
+      'loading': 'Loading...',
+
       // Header
       'app.title': 'Anime Tracker',
       'header.login': 'Login',
@@ -30,7 +33,6 @@ export class TranslationService {
       'login.password': 'Password',
       'login.password.placeholder': 'Enter your password',
       'login.submit': 'Login',
-      'login.loading': 'Loading...',
       'login.error.email.required': 'Email is required',
       'login.error.email.invalid': 'Please enter a valid email',
       'login.error.password.required': 'Password is required',
@@ -81,7 +83,6 @@ export class TranslationService {
       'home.episodes': 'episodes',
       'home.load.more': 'Load More',
       'home.no.more': 'No More Results',
-      'home.loading': 'Loading...',
       'home.error': 'Error loading animes. Please try again.',
       'home.retry': 'Try Again',
       'home.view.details': 'View Details',
@@ -94,10 +95,15 @@ export class TranslationService {
       'detail.aired': 'Aired:',
       'detail.to': 'to',
       'detail.synopsis': 'Synopsis',
-      'detail.loading': 'Loading...',
-      'detail.error': 'Error loading anime details. Please try again later.'
+      'detail.error': 'Error loading anime details. Please try again later.',
+
+      // Anime card
+      'add.favorite': 'Add to Favorites',
+      'remove.favorite': 'Remove from Favorites',
     },
     es: {
+      'loading': 'Cargando...',
+
       // Header
       'app.title': 'Anime Tracker',
       'header.login': 'Iniciar Sesión',
@@ -112,7 +118,6 @@ export class TranslationService {
       'login.password': 'Contraseña',
       'login.password.placeholder': 'Ingresa tu contraseña',
       'login.submit': 'Iniciar Sesión',
-      'login.loading': 'Cargando...',
       'login.error.email.required': 'El correo electrónico es requerido',
       'login.error.email.invalid': 'Por favor ingresa un correo electrónico válido',
       'login.error.password.required': 'La contraseña es requerida',
@@ -163,7 +168,6 @@ export class TranslationService {
       'home.episodes': 'episodios',
       'home.load.more': 'Cargar Más',
       'home.no.more': 'No Hay Más Resultados',
-      'home.loading': 'Cargando...',
       'home.error': 'Error al cargar animes. Por favor intenta de nuevo.',
       'home.retry': 'Intentar de Nuevo',
       'home.view.details': 'Ver Detalles',
@@ -176,8 +180,11 @@ export class TranslationService {
       'detail.aired': 'Emitido:',
       'detail.to': 'hasta',
       'detail.synopsis': 'Sinopsis',
-      'detail.loading': 'Cargando...',
-      'detail.error': 'Error al cargar los detalles del anime. Por favor intente más tarde.'
+      'detail.error': 'Error al cargar los detalles del anime. Por favor intente más tarde.',
+
+      // Anime card
+      'add.favorite': 'Agregar a favoritos',
+      'remove.favorite': 'Eliminar de favoritos',
     }
   };
 

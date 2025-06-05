@@ -1,0 +1,67 @@
+.anime-card {
+  background: var(--card-background);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .anime-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .poster {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .anime-info {
+    padding: 1rem;
+
+    h3 {
+      margin: 0 0 0.75rem;
+      font-size: 1rem;
+      color: var(--text-color);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.3;
+      height: 2.6em;
+    }
+
+    .meta-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--text-color-light);
+
+      .episodes, .rating {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+
+        i {
+          font-size: 0.9rem;
+        }
+      }
+
+      .rating {
+        color: var(--rating-color, #f1c40f);
+        font-weight: 500;
+      }
+    }
+  }
+}

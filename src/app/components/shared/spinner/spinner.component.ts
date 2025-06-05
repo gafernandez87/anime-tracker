@@ -54,7 +54,7 @@ import { TranslatePipe } from '../../../pipes/translate.pipe';
   `]
 })
 export class SpinnerComponent {
-  @Input() text = 'home.loading';
+  @Input() text = 'loading';
   @Input() showText = true;
   @Input() overlay = false;
 } 

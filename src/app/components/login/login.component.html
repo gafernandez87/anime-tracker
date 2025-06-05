@@ -49,10 +49,10 @@
     <button 
       type="submit" 
       [disabled]="loginForm.invalid || loading"
-      class="login-button"
+      class="button"
     >
       <span *ngIf="!loading">{{ 'login.submit' | translate }}</span>
-      <span *ngIf="loading">{{ 'login.loading' | translate }}</span>
+      <span *ngIf="loading">{{ 'loading' | translate }}</span>
     </button>
 
     <div class="signup-link">
