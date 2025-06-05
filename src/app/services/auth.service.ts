@@ -12,7 +12,7 @@ export class AuthService {
   private readonly USER_KEY = 'user';
   
   private userSubject = new BehaviorSubject<User | null>(null);
-  user$ = this.userSubject.asObservable();
+  public user$ = this.userSubject.asObservable();
 
   constructor(private http: HttpClient) {
     this.loadStoredAuth();

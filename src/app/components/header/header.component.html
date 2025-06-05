@@ -3,28 +3,24 @@
     <a routerLink="/" class="logo">{{ 'app.title' | translate }}</a>
     
     <div class="right-section">
-      <div class="language-selector">
-        <button 
-          class="language-btn" 
-          [class.active]="currentLang === 'es'"
-          (click)="switchLanguage('es')" 
-          aria-label="Español">
-          ES
-        </button>
-        <button 
-          class="language-btn" 
-          [class.active]="currentLang === 'en'"
-          (click)="switchLanguage('en')" 
-          aria-label="English">
-          EN
-        </button>
+      <div class="language-selector" [class.opened]="languageMenuOpen" (click)="toggleMenuLang()">
+        {{currentLang | uppercase}}
+        <i class="fa fa-caret-{{languageMenuOpen ? 'up' : 'down'}}" aria-hidden="true"></i>
+        <div class="lang-menu" [class.opened]="languageMenuOpen">
+          <a (click)="switchLanguage('es')">Español</a>
+          <a (click)="switchLanguage('en')">English</a>
+        </div>
       </div>
+
       <ng-container *ngIf="currentUser; else loginButton">
-        <div class="user-info">
-          <span class="username">{{ currentUser.username }}</span>
-          <button class="logout-btn" (click)="logout()">
-            {{ 'header.logout' | translate }}
-          </button>
+        <div class="user-info" [class.opened]="profileMenuOpen" (click)="toggleMenu()" tabindex="0">
+          <i class="fas fa-user-circle"></i>{{ currentUser.username }}
+          <i class="fa fa-caret-{{profileMenuOpen ? 'up' : 'down'}}" aria-hidden="true"></i>
+          <div class="user-menu" [class.opened]="profileMenuOpen">
+            <a routerLink="/my-list">{{ 'header.favorites' | translate }}</a>
+            <a routerLink="/me">{{ 'header.profile' | translate }}</a>
+            <a (click)="logout()">{{ 'header.logout' | translate }}</a>
+          </div>
         </div>
       </ng-container>
       

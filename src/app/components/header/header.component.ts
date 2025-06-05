@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
@@ -15,14 +15,26 @@ import { TranslationService, Language } from '../../services/translation.service
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  
   currentUser: User | null = null;
   currentLang: Language = 'es';
   private destroy$ = new Subject<void>();
 
+  profileMenuOpen = false;
+  languageMenuOpen = false;
+
   constructor(
     private authService: AuthService,
-    private translationService: TranslationService
+    private translationService: TranslationService,
+    private eRef: ElementRef
   ) {}
+
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(event: Event) {
+    if (this.profileMenuOpen && !this.eRef.nativeElement.contains(event.target)) {
+      this.profileMenuOpen = false;
+    }
+  }
 
   ngOnInit() {
     this.authService.user$
@@ -41,6 +53,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  toggleMenu() {
+    this.profileMenuOpen = !this.profileMenuOpen;
+  }
+
+  toggleMenuLang() {
+    this.languageMenuOpen = !this.languageMenuOpen;
   }
 
   logout() {

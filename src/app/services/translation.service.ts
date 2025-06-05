@@ -20,6 +20,8 @@ export class TranslationService {
       'app.title': 'Anime Tracker',
       'header.login': 'Login',
       'header.logout': 'Logout',
+      'header.favorites': 'My favorites',
+      'header.profile': 'Profile',
       
       // Login
       'login.title': 'Login',
@@ -100,6 +102,8 @@ export class TranslationService {
       'app.title': 'Anime Tracker',
       'header.login': 'Iniciar Sesión',
       'header.logout': 'Cerrar Sesión',
+      'header.favorites': 'Mis favoritos',
+      'header.profile': 'Perfil',
       
       // Login
       'login.title': 'Iniciar Sesión',
