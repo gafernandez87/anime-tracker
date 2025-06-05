@@ -13,7 +13,7 @@
           {{ parseFloat(anime.average_rating) | number:'1.1-1' }}
         </span>
       </div>
-      <button class="button" (click)="addFav()">{{(loading ? 'loading' : isFavorite ? 'remove.favorite' : 'add.favorite') | translate}}</button>
+      <button class="button" (click)="toggleWatched()">{{(loading ? 'loading' : watched ? 'remove.watched' : 'add.watched') | translate}}</button>
     </div>
   </span>
 </div>

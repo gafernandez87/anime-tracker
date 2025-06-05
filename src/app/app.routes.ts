@@ -3,7 +3,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AnimeDetailComponent } from './components/anime-detail/anime-detail.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { FavoritesComponent } from './components/favorites/favorites.component';
+import { WatchedComponent } from './components/watched/watched.component';
 import { AuthGuard } from './interceptors/auth.guard';
 import { ProfileComponent } from './components/profile/profile.component';
 
@@ -27,7 +27,7 @@ export const routes: Routes = [
   },
   {
     path: 'favorites',
-    component: FavoritesComponent,
+    component: WatchedComponent,
     canActivate: [AuthGuard]
   },
   {

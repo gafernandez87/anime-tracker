@@ -37,8 +37,8 @@ export class AnimeService {
     return this.http.get<Anime>(`${this.API_URL}/anime/${id}`);
   }
 
-  getFavoriteAnimes(): Observable<Anime[]> {
-    return this.http.get<Anime[]>(`${this.API_URL}/anime/me/favorites`);
+  getWatchedAnimes(): Observable<Anime[]> {
+    return this.http.get<Anime[]>(`${this.API_URL}/anime/me/watched`);
   }
 
   searchAnimes(query: string): Observable<Anime | null> {
@@ -47,7 +47,7 @@ export class AnimeService {
     );
   }
 
-  markAnimeAsFavorite(animeId: number): Observable<Anime> {
-    return this.http.post<Anime>(`${this.API_URL}/anime/${animeId}/favorite`, {});
+  markAnimeAsWatched(animeId: number): Observable<Anime> {
+    return this.http.post<Anime>(`${this.API_URL}/anime/${animeId}/watched`, {});
   }
 } 

@@ -5,15 +5,15 @@ import { Anime } from '../../interfaces/anime.interface';
 import { AnimeCardComponent } from "../anime-card/anime-card.component";
 
 @Component({
-  selector: 'app-favorites',
+  selector: 'app-watched',
   standalone: true,
   imports: [CommonModule, AnimeCardComponent],
-  templateUrl: './favorites.component.html',
-  styleUrls: ['./favorites.component.scss']
+  templateUrl: './watched.component.html',
+  styleUrls: ['./watched.component.scss']
 })
-export class FavoritesComponent implements OnInit{
+export class WatchedComponent implements OnInit{
 
-  favoriteAnimes: Anime[] = [];
+  watchedAnimes: Anime[] = [];
   loading = false;
   error = '';
 
@@ -24,10 +24,10 @@ export class FavoritesComponent implements OnInit{
     this.loading = true;
     this.error = '';
 
-    this.animeService.getFavoriteAnimes()
+    this.animeService.getWatchedAnimes()
       .subscribe({
         next: (data) => {
-          this.favoriteAnimes = data;
+          this.watchedAnimes = data;
         },
         error: (error) => {
           this.error = error.error?.message ;

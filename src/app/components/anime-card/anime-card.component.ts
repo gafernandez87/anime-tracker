@@ -14,7 +14,7 @@ import { AnimeService } from '../../services/anime.service';
 })
 export class AnimeCardComponent {
   @Input() anime?: Anime;
-  @Input() isFavorite: boolean = false;
+  @Input() watched: boolean = false;
 
   loading: boolean = false;
 
@@ -24,13 +24,12 @@ export class AnimeCardComponent {
     return Number.parseFloat(value);
   }
 
-  addFav(): void {
+  toggleWatched(): void {
     if(this.anime) {
       this.loading = true;
-      this.animeService.markAnimeAsFavorite(this.anime.id).subscribe({
-        next: (anime) => {
-          console.log('Anime added to favorites:', anime);
-          this.isFavorite = !this.isFavorite;
+      this.animeService.markAnimeAsWatched(this.anime.id).subscribe({
+        next: () => {
+          this.watched = !this.watched;
           this.loading = false;
         },
         error: (error) => {

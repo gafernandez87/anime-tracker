@@ -104,6 +104,7 @@
     &.opened {
       opacity: 1;
       display: flex;
+      z-index: 9999;
     }
 
     a {

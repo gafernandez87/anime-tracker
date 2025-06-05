@@ -23,7 +23,7 @@ export class TranslationService {
       'app.title': 'Anime Tracker',
       'header.login': 'Login',
       'header.logout': 'Logout',
-      'header.favorites': 'My favorites',
+      'header.favorites': 'Watched Animes',
       'header.profile': 'Profile',
       
       // Login
@@ -98,8 +98,8 @@ export class TranslationService {
       'detail.error': 'Error loading anime details. Please try again later.',
 
       // Anime card
-      'add.favorite': 'Add to Favorites',
-      'remove.favorite': 'Remove from Favorites',
+      'add.wathced': 'Mark as watched',
+      'remove.watched': 'Remove from watched',
     },
     es: {
       'loading': 'Cargando...',
@@ -108,7 +108,7 @@ export class TranslationService {
       'app.title': 'Anime Tracker',
       'header.login': 'Iniciar Sesión',
       'header.logout': 'Cerrar Sesión',
-      'header.favorites': 'Mis favoritos',
+      'header.favorites': 'Animes Vistos',
       'header.profile': 'Perfil',
       
       // Login
@@ -183,8 +183,8 @@ export class TranslationService {
       'detail.error': 'Error al cargar los detalles del anime. Por favor intente más tarde.',
 
       // Anime card
-      'add.favorite': 'Agregar a favoritos',
-      'remove.favorite': 'Eliminar de favoritos',
+      'add.watched': 'Marcar como visto',
+      'remove.watched': 'Eliminar de vistos',
     }
   };
 

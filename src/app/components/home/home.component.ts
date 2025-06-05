@@ -11,7 +11,7 @@ import { AnimeCardComponent } from "../anime-card/anime-card.component";
 import { AuthService } from '../../services/auth.service';
 
 
-type AnimeFav = Anime & { isFavorite: boolean; };
+type AnimeWatched = Anime & { isWatched: boolean; };
 
 @Component({
   selector: 'app-home',
@@ -28,7 +28,7 @@ type AnimeFav = Anime & { isFavorite: boolean; };
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  animes: AnimeFav[] = [];
+  animes: AnimeWatched[] = [];
   loading = false;
   error = false;
   currentPage = 1;
@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
-          const pageData = response.data.map(anime => ({ ...anime, isFavorite: false } as AnimeFav));
+          const pageData = response.data.map(anime => ({ ...anime, isWatched: false } as AnimeWatched));
           this.animes = this.currentPage === 1 
             ? pageData
             : [...this.animes, ...pageData];
@@ -93,12 +93,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private loadFavoriteAnimes() {
-    this.animeService.getFavoriteAnimes()
+    this.animeService.getWatchedAnimes()
       .subscribe({
-        next: (favorites: Anime[]) => {
+        next: (watchedAnimes: Anime[]) => {
           this.animes = this.animes.map(anime => {
-            const isFavorite = favorites.some(fav => fav.id === anime.id);
-            return { ...anime, isFavorite };
+            const isWatched = watchedAnimes.some(anim => anim.id === anime.id);
+            return { ...anime, isWatched };
           });
         },
         error: (error) => {

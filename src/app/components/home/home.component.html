@@ -15,7 +15,7 @@
   </div>
 
   <div class="anime-grid" *ngIf="animes.length">
-    <app-anime-card *ngFor="let anime of animes" [anime]="anime" [isFavorite]="anime.isFavorite"></app-anime-card>
+    <app-anime-card *ngFor="let anime of animes" [anime]="anime" [watched]="anime.isWatched"></app-anime-card>
   </div>
 
   <div class="loading-more" *ngIf="loading && animes.length">
