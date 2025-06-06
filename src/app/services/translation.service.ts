@@ -25,6 +25,7 @@ export class TranslationService {
       'header.logout': 'Logout',
       'header.favorites': 'Watched Animes',
       'header.profile': 'Profile',
+      'header.together': 'Together',
       
       // Login
       'login.title': 'Login',
@@ -113,6 +114,7 @@ export class TranslationService {
       'header.logout': 'Cerrar Sesión',
       'header.favorites': 'Animes Vistos',
       'header.profile': 'Perfil',
+      'header.together': 'Juntos',
       
       // Login
       'login.title': 'Iniciar Sesión',

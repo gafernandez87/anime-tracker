@@ -54,4 +54,8 @@ export class AnimeService {
   markAnimeAsWatched(animeId: number): Observable<Anime> {
     return this.http.post<Anime>(`${this.API_URL}/anime/${animeId}/watched`, {});
   }
+
+  getTogether(usernames: string): Observable<Anime[]> {
+    return this.http.get<Anime[]>(`${this.API_URL}/anime/together/${usernames}`);
+  }
 } 

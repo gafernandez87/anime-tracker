@@ -19,6 +19,7 @@
           <div class="user-menu" [class.opened]="profileMenuOpen">
             <a routerLink="/me">{{ 'header.profile' | translate }}</a>
             <a routerLink="/favorites">{{ 'header.favorites' | translate }}</a>
+            <a routerLink="/together">{{ 'header.together' | translate}}</a>
             <a (click)="logout()">{{ 'header.logout' | translate }}</a>
           </div>
         </div>

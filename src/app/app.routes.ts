@@ -7,6 +7,7 @@ import { WatchedComponent } from './components/watched/watched.component';
 import { AuthGuard } from './interceptors/auth.guard';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PublicWatchedComponent } from './components/public-watched/public-watched.component';
+import { TogetherComponent } from './components/together/together.component';
 
 export const routes: Routes = [
   {
@@ -38,6 +39,10 @@ export const routes: Routes = [
   {
     path: ':username/watched',
     component: PublicWatchedComponent
+  },
+  {
+    path: 'together',
+    component: TogetherComponent
   },
   { path: '**', redirectTo: '/home' }
 ];
