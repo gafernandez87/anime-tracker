@@ -60,10 +60,10 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
   private cleanFilters(filters: AnimeFilters): AnimeFilters {
     const cleanedFilters: AnimeFilters = {};
-    
-    if (filters.search?.trim()) {
-      cleanedFilters.search = filters.search.trim();
-    }
+  
+    // if (filters.search?.trim()) {
+    cleanedFilters.search = filters.search?.trim();
+    // }
     if (filters.status) {
       cleanedFilters.status = filters.status;
     }

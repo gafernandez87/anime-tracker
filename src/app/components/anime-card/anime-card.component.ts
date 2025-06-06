@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { Anime } from '../../interfaces/anime.interface';
 import { RouterLink } from '@angular/router';
 import { AnimeService } from '../../services/anime.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-anime-card',
@@ -12,13 +13,19 @@ import { AnimeService } from '../../services/anime.service';
   templateUrl: './anime-card.component.html',
   styleUrls: ['./anime-card.component.scss']
 })
-export class AnimeCardComponent {
+export class AnimeCardComponent implements OnInit{
   @Input() anime?: Anime;
   @Input() watched: boolean = false;
 
+  userLoggedIn: boolean = false;
+
   loading: boolean = false;
 
-  constructor(private animeService: AnimeService) {}
+  constructor(private authService: AuthService, private animeService: AnimeService) {}
+
+  ngOnInit(): void {
+    this.userLoggedIn = this.authService.isAuthenticated();
+  }
 
   parseFloat(value: string): number {
     return Number.parseFloat(value);

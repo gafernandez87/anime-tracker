@@ -4,8 +4,19 @@
   min-height: calc(100vh - 70px);
 }
 
+h2 {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
 .loading-initial {
   min-height: 300px;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: .7;
 }
 
 .error-container {

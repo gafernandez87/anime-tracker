@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-export type Language = 'en' | 'es';
+export type Language = 'en' | 'es' | 'ja';
 
 type Translations = {
   [key: string]: string;
@@ -193,7 +193,98 @@ export class TranslationService {
 
       // Watched Component
       'watched.public.list': 'Hacer lista pública',
+    },
+    ja: {
+      // General
+      'loading': '読み込み中...',
+
+      // Header
+      'app.title': 'アニメトラッカー',
+      'header.login': 'ログイン',
+      'header.logout': 'ログアウト',
+      'header.favorites': '視聴済みアニメ',
+      'header.profile': 'プロフィール',
+      'header.together': '一緒に',
+
+      // Login
+      'login.title': 'ログイン',
+      'login.email': 'メールアドレス',
+      'login.email.placeholder': 'メールアドレスを入力',
+      'login.password': 'パスワード',
+      'login.password.placeholder': 'パスワードを入力',
+      'login.submit': 'ログイン',
+      'login.error.email.required': 'メールアドレスは必須です',
+      'login.error.email.invalid': '有効なメールアドレスを入力してください',
+      'login.error.password.required': 'パスワードは必須です',
+      'login.error.password.minlength': 'パスワードは6文字以上である必要があります',
+      'login.error.invalid': 'メールアドレスまたはパスワードが無効です',
+      'login.no.account': 'アカウントをお持ちでないですか？',
+      'login.signup.link': '登録する',
+
+      // Signup
+      'signup.title': 'アカウント作成',
+      'signup.username': 'ユーザー名',
+      'signup.username.placeholder': 'ユーザー名を入力',
+      'signup.email': 'メールアドレス',
+      'signup.email.placeholder': 'メールアドレスを入力',
+      'signup.password': 'パスワード',
+      'signup.password.placeholder': 'パスワードを作成',
+      'signup.submit': '登録する',
+      'signup.loading': 'アカウントを作成中...',
+      'signup.error.username.required': 'ユーザー名は必須です',
+      'signup.error.username.minlength': 'ユーザー名は3文字以上である必要があります',
+      'signup.error.email.required': 'メールアドレスは必須です',
+      'signup.error.email.invalid': '有効なメールアドレスを入力してください',
+      'signup.error.password.required': 'パスワードは必須です',
+      'signup.error.password.minlength': 'パスワードは6文字以上である必要があります',
+      'signup.error.generic': 'アカウント作成中にエラーが発生しました。もう一度お試しください。',
+      'signup.have.account': 'すでにアカウントをお持ちですか？',
+      'signup.login.link': 'ログイン',
+      'signup.password.show': 'パスワードを表示',
+      'signup.password.hide': 'パスワードを非表示',
+
+      // Home
+      'home.search.label': '検索',
+      'home.search.placeholder': 'アニメの名前を入力...',
+      'home.search.button': '検索',
+      'home.filter.status': 'ステータス:',
+      'home.filter.status.all': 'すべて',
+      'home.filter.status.current': '放送中',
+      'home.filter.status.finished': '完結',
+      'home.filter.status.upcoming': '近日公開',
+      'home.filter.status.unreleased': '未公開',
+      'home.filter.status.tba': '未定',
+      'home.filter.age': '年齢制限:',
+      'home.filter.age.all': 'すべて',
+      'home.filter.age.g': 'G - 全年齢対象',
+      'home.filter.age.pg': 'PG - 子供向け',
+      'home.filter.age.r': 'R - 17歳以上（暴力・言葉）',
+      'home.filter.age.r18': 'R18 - 成人向け',
+      'home.episodes': '話',
+      'home.load.more': 'もっと読み込む',
+      'home.no.more': 'これ以上結果はありません',
+      'home.error': 'アニメの読み込み中にエラーが発生しました。もう一度お試しください。',
+      'home.retry': '再試行',
+      'home.view.details': '詳細を見る',
+
+      // Anime Detail
+      'detail.back': 'リストに戻る',
+      'detail.rating': '評価:',
+      'detail.episodes': '話数:',
+      'detail.status': 'ステータス:',
+      'detail.aired': '放送期間:',
+      'detail.to': 'から',
+      'detail.synopsis': 'あらすじ',
+      'detail.error': 'アニメの詳細を読み込めませんでした。後ほどお試しください。',
+
+      // Anime card
+      'add.watched': '視聴済みに追加',
+      'remove.watched': '視聴済みから削除',
+
+      // Watched Component
+      'watched.public.list': 'リストを公開する',
     }
+
   };
 
   constructor() {

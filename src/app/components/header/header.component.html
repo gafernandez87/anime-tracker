@@ -3,15 +3,6 @@
     <a routerLink="/" class="logo">{{ 'app.title' | translate }}</a>
     
     <div class="right-section">
-      <div class="language-selector" [class.opened]="languageMenuOpen" (click)="toggleMenuLang()">
-        {{currentLang | uppercase}}
-        <i class="fa fa-caret-{{languageMenuOpen ? 'up' : 'down'}}" aria-hidden="true"></i>
-        <div class="lang-menu" [class.opened]="languageMenuOpen">
-          <a (click)="switchLanguage('es')">Español</a>
-          <a (click)="switchLanguage('en')">English</a>
-        </div>
-      </div>
-
       <ng-container *ngIf="currentUser; else loginButton">
         <div class="user-info" [class.opened]="profileMenuOpen" (click)="toggleMenu()" tabindex="0">
           <i class="fas fa-user-circle"></i>{{ currentUser.username }}
@@ -24,6 +15,16 @@
           </div>
         </div>
       </ng-container>
+
+       <div class="language-selector" [class.opened]="languageMenuOpen" (click)="toggleMenuLang()">
+        {{currentLang | uppercase}}
+        <i class="fa fa-caret-{{languageMenuOpen ? 'up' : 'down'}}" aria-hidden="true"></i>
+        <div class="lang-menu" [class.opened]="languageMenuOpen">
+          <a (click)="switchLanguage('es')">Español</a>
+          <a (click)="switchLanguage('en')">English</a>
+          <a (click)="switchLanguage('ja')">日本語</a>
+        </div>
+      </div>
       
       <ng-template #loginButton>
         <a routerLink="/login" class="login-btn">

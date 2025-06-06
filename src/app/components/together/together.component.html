@@ -10,7 +10,7 @@
     </div>
     <div class="user-list">
       <span class="user-added" *ngFor="let user of userList">{{user}} <span>x</span></span>
-      <button class="button" (click)="compare()">Ver Animes en común</button>
+      <button class="button" [disabled]="userList.length < 2" (click)="compare()">Ver Animes en común</button>
     </div>
   </div>
 

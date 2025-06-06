@@ -4,6 +4,11 @@
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
+
+  &.watched{
+    // border: 3px solid var(--watched-color, #af4c4c);
+    filter: drop-shadow(0 0 5px var(--watched-color, #af4c4c));
+  }
   
   &:hover {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
@@ -61,6 +66,19 @@
       .rating {
         color: var(--rating-color, #f1c40f);
         font-weight: 500;
+      }
+    }
+
+    .button {
+      margin-top: 10px;
+
+      &.watched {
+        background-color: var(--watched-color, #af4c4c);
+        color: white;
+
+        &:hover {
+          background-color: var(--watched-color-hover, #d67c7c);
+        }
       }
     }
   }

@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   error = false;
   currentPage = 1;
   hasMorePages = true;
+  totalAnimes = 0;
 
   private destroy$ = new Subject<void>();
   private currentFilters: AnimeFilters = {};
@@ -83,6 +84,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             ? pageData
             : [...this.animes, ...pageData];
           this.hasMorePages = this.currentPage < response.pagination.totalPages;
+          this.totalAnimes = response.pagination.total;
           this.loading = false;
         },
         error: () => {

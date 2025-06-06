@@ -1,4 +1,4 @@
-<div class="anime-card" *ngIf="anime">
+<div *ngIf="anime" class="anime-card" [class.watched]="watched">
   <span class="anime-link">
     <img [routerLink]="['/anime', anime.id]" [src]="anime.poster" [alt]="anime.title" class="poster" loading="lazy">
     <div class="anime-info">
@@ -13,7 +13,12 @@
           {{ parseFloat(anime.average_rating) | number:'1.1-1' }}
         </span>
       </div>
-      <button class="button" (click)="toggleWatched()">{{(loading ? 'loading' : watched ? 'remove.watched' : 'add.watched') | translate}}</button>
+      <button *ngIf="userLoggedIn" 
+        class="button" [class.watched]="watched" 
+        (click)="toggleWatched()"
+      >
+        {{(loading ? 'loading' : watched ? 'remove.watched' : 'add.watched') | translate}}
+      </button>
     </div>
   </span>
 </div>

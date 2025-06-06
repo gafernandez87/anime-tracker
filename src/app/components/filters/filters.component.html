@@ -1,4 +1,16 @@
 <div class="filters" [formGroup]="filtersForm">
+  <div class="filter-group">
+    <label>{{ 'home.filter.status' | translate }}</label>
+    <select formControlName="status">
+      <option value="">{{ 'home.filter.status.all' | translate }}</option>
+      <option value="current">{{ 'home.filter.status.current' | translate }}</option>
+      <option value="finished">{{ 'home.filter.status.finished' | translate }}</option>
+      <option value="upcoming">{{ 'home.filter.status.upcoming' | translate }}</option>
+      <option value="unreleased">{{ 'home.filter.status.unreleased' | translate }}</option>
+      <option value="tba">{{ 'home.filter.status.tba' | translate }}</option>
+    </select>
+  </div>
+  
   <div class="filter-group search-group">
     <label>{{ 'home.search.label' | translate }}</label>
     <div class="search-container">
@@ -12,7 +24,6 @@
       <button 
         class="search-button" 
         (click)="onSearch()"
-        [disabled]="!filtersForm.get('search')?.value?.trim()"
       >
         <i class="fas fa-search"></i>
         {{ 'home.search.button' | translate }}
@@ -20,19 +31,7 @@
     </div>
   </div>
 
-  <div class="filter-group">
-    <label>{{ 'home.filter.status' | translate }}</label>
-    <select formControlName="status">
-      <option value="">{{ 'home.filter.status.all' | translate }}</option>
-      <option value="current">{{ 'home.filter.status.current' | translate }}</option>
-      <option value="finished">{{ 'home.filter.status.finished' | translate }}</option>
-      <option value="upcoming">{{ 'home.filter.status.upcoming' | translate }}</option>
-      <option value="unreleased">{{ 'home.filter.status.unreleased' | translate }}</option>
-      <option value="tba">{{ 'home.filter.status.tba' | translate }}</option>
-    </select>
-  </div>
-
-  <div class="filter-group">
+  <!-- <div class="filter-group">
     <label>{{ 'home.filter.age' | translate }}</label>
     <select formControlName="ageRating">
       <option value="">{{ 'home.filter.age.all' | translate }}</option>
@@ -41,5 +40,5 @@
       <option value="R">{{ 'home.filter.age.r' | translate }}</option>
       <option value="R18">{{ 'home.filter.age.r18' | translate }}</option>
     </select>
-  </div>
+  </div> -->
 </div> 

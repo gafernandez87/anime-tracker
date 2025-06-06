@@ -1,9 +1,10 @@
+<div *ngIf="loading" class="loading-initial">
+  <app-spinner [overlay]="true"></app-spinner>
+</div>
+
 <main class="main-content">
   <app-filters (filtersChanged)="onFiltersChanged($event)"></app-filters>
-  
-  <div *ngIf="loading && !animes.length" class="loading-initial">
-    <app-spinner [overlay]="true"></app-spinner>
-  </div>
+  <h2>{{totalAnimes}} Animes</h2>
 
   <div *ngIf="error" class="error-container">
     <i class="fas fa-exclamation-circle"></i>
