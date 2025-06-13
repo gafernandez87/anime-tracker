@@ -136,6 +136,7 @@ export class TranslationService {
       'profile.password.change': 'Change Password',
       'profile.edit': 'Edit Profile',
       'profile.watched.title': 'Watched Animes',
+      'profile.share': 'Share Profile',
 
       // Together
       'together.title': 'Compare Animes',
@@ -143,6 +144,11 @@ export class TranslationService {
       'together.add.user': 'Type the name of another user',
       'together.compare': 'Compare',
       'together.animes.in.common': 'Animes in common',
+
+      // System Messages
+      'system.username.taken': 'Username already taken',
+      'system.profile.url.copied': 'Profile URL copied to clipboard',
+
     },
     es: {
       'home': 'Inicio',
@@ -264,6 +270,7 @@ export class TranslationService {
       'profile.password.change': 'Cambiar Contraseña',
       'profile.edit': 'Editar Perfil',
       'profile.watched.title': 'Animes Vistos',
+      'profile.share': 'Compartir Perfil',
 
       // Together
       'together.title': 'Comparar Animes',
@@ -271,6 +278,10 @@ export class TranslationService {
       'together.add.user': 'Escribe el nombre de otro usuario',
       'together.compare': 'Comparar',
       'together.animes.in.common': 'Animes en común',
+
+      // System Messages
+      'system.username.taken': 'Nombre de usuario en uso',
+      'system.profile.url.copied': 'URL del perfil copiada al portapapeles',
     },
     ja: {
       // General
@@ -393,12 +404,17 @@ export class TranslationService {
       'profile.password.change': 'パスワードを変更',
       'profile.edit': 'プロフィールを編集',
       'profile.watched.title': '視聴済みアニメ',
+      'profile.share': 'プロフィールを共有',
 
       'together.title': 'アニメを比較',
       'together.description': '他のユーザーと視聴済みアニメを比較',
       'together.add.user': '他のユーザーの名前を入力',
       'together.compare': '比較',
       'together.animes.in.common': '視聴済みアニメ',
+
+      // System Messages
+      'system.username.taken': 'ユーザー名はすでに使用されています',
+      'system.profile.url.copied': 'プロフィールのURLをクリップボードにコピーしました',
     }
 
   };

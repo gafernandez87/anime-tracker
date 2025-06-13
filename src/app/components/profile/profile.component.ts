@@ -11,6 +11,7 @@ import { User } from '../../interfaces/auth.interface';
 import { ModalComponent } from '../shared/modal/modal.component';
 import { SpinnerComponent } from '../shared/spinner/spinner.component';
 import { AlertService } from '../../services/alert.service';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-profile',
@@ -52,7 +53,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private animeService: AnimeService, 
     private authService: AuthService,
     private alertService: AlertService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private translateService: TranslationService
   ) {
     this.passwordForm = this.fb.group({
       currentPassword: ['', [Validators.required]],
@@ -192,7 +194,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         // check if username is already taken
       this.authService.checkUsername(this.profileForm?.value?.username, this.me?.id).subscribe((isTaken) => {
         if(isTaken) {
-          this.alertService.error('Username already taken');
+          this.alertService.error(this.translateService.translate('system.username.taken'));
           return;
         } else {
           this.authService.updateProfile(this.profileForm.value).subscribe({
@@ -217,6 +219,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.alertService.error('Error updating profile');
       this.loading = false;
     }
+  }
+
+  shareProfile(){
+    if (!this.me) return;
+    const url = `${window.location.origin}/profile/${this.me.username}`;
+    navigator.clipboard.writeText(url);
+    this.alertService.success(this.translateService.translate('system.profile.url.copied'));
   }
 
   private passwordMatchValidator(g: FormGroup) {

@@ -16,6 +16,10 @@
       <p class="bio">{{me?.bio || ('profile.no.bio' | translate)}}</p>
     </div>
     <div class="actions">
+      <b class="share-btn" (click)="shareProfile()">
+        <i class="fas fa-share-nodes"></i>
+        {{ 'profile.share' | translate }}
+      </b>
       <button class="edit-btn" (click)="showProfileModal = true">
         <i class="fas fa-edit"></i>
         {{ 'profile.edit' | translate }}

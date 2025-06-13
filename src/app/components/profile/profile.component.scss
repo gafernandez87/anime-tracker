@@ -122,6 +122,13 @@
     }
   }
 
+  .share-btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .password-btn {
     background-color: var(--background-color);
     color: var(--text-color);
