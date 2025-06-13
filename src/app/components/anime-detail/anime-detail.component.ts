@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -14,7 +14,7 @@ import { ModalComponent } from '../shared/modal/modal.component';
   templateUrl: './anime-detail.component.html',
   styleUrls: ['./anime-detail.component.scss']
 })
-export class AnimeDetailComponent implements OnInit {
+export class AnimeDetailComponent implements OnInit, AfterViewInit {
   anime: Anime | null = null;
   loading = true;
   error = '';
@@ -31,6 +31,11 @@ export class AnimeDetailComponent implements OnInit {
     if (id) {
       this.loadAnime(id);
     }
+  }
+
+  ngAfterViewInit(): void {
+    // scroll top
+    window.scrollTo(0, 0);
   }
 
   private loadAnime(id: string) {

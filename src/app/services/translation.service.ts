@@ -24,6 +24,13 @@ export class TranslationService {
       'save': 'Save',
       'edit': 'Edit',
 
+      // status
+      'current': 'Current',
+      'finished': 'Finished',
+      'upcoming': 'Upcoming',
+      'unreleased': 'Unreleased',
+      'tba': 'TBA',
+
       // Header
       'app.title': 'Anime Tracker',
       'header.login': 'Login',
@@ -103,6 +110,7 @@ export class TranslationService {
       'detail.to': 'to',
       'detail.synopsis': 'Synopsis',
       'detail.error': 'Error loading anime details. Please try again later.',
+      'detail.duration': 'Duration',
 
       // Anime card
       'add.watched': 'Mark as watched',
@@ -143,6 +151,13 @@ export class TranslationService {
       'cancel': 'Cancelar',
       'save': 'Guardar',
       'edit': 'Editar',
+
+      // status
+      'current': 'En emisión',
+      'finished': 'Finalizado',
+      'upcoming': 'Próximamente',
+      'unreleased': 'No publicado',
+      'tba': 'Por anunciar',
 
       // Header
       'app.title': 'Anime Tracker',
@@ -223,6 +238,7 @@ export class TranslationService {
       'detail.to': 'hasta',
       'detail.synopsis': 'Sinopsis',
       'detail.error': 'Error al cargar los detalles del anime. Por favor intente más tarde.',
+      'detail.duration': 'Duración',
 
       // Anime card
       'add.watched': 'Marcar como visto',
@@ -264,6 +280,13 @@ export class TranslationService {
       'cancel': 'キャンセル',
       'save': '保存',
       'edit': '編集',
+
+      // status
+      'current': '放送中',
+      'finished': '完結',
+      'upcoming': '近日公開',
+      'unreleased': '未公開',
+      'tba': '未定',
 
       // Header
       'app.title': 'アニメトラッカー',
@@ -344,7 +367,8 @@ export class TranslationService {
       'detail.to': 'から',
       'detail.synopsis': 'あらすじ',
       'detail.error': 'アニメの詳細を読み込めませんでした。後ほどお試しください。',
-
+      'detail.duration': '放送時間',
+      
       // Anime card
       'add.watched': '視聴済みに追加',
       'remove.watched': '視聴済みから削除',

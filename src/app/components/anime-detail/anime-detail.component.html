@@ -1,7 +1,7 @@
 <div class="detail-container">
   <div *ngIf="loading" class="loading">
     <i class="fas fa-spinner fa-spin"></i>
-    <p>{{ 'detail.loading' | translate }}</p>
+    <p>{{ 'loading' | translate }}</p>
   </div>
 
   <div *ngIf="error" class="error">
@@ -52,7 +52,7 @@
           <p>
             <i class="fas fa-tag"></i>
             <strong>{{ 'detail.status' | translate }}:</strong>
-            {{anime.status}}
+            {{anime.status | translate}}
           </p>
           <!-- <p>
             <i class="fas fa-theater-masks"></i>
