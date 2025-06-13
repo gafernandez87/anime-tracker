@@ -11,8 +11,8 @@ export const TOKEN_KEY = 'att-token';
 })
 export class AuthService {
   
-  private readonly API_URL = 'http://localhost:3000/api';
-  // private readonly API_URL = 'https://anime-tracker-be.onrender.com/api';
+  // private readonly API_URL = 'http://localhost:3000/api';
+  private readonly API_URL = 'https://anime-tracker-be.onrender.com/api';
 
   private userSubject = new BehaviorSubject<User | null>(null);
   public user$ = this.userSubject.asObservable();
