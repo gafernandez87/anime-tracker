@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AnimeResponse, Anime } from '../interfaces/anime.interface';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnimeService {
-  // private readonly API_URL = 'http://localhost:3000/api';
-  private readonly API_URL = 'https://anime-tracker-be.onrender.com/api';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +18,7 @@ export class AnimeService {
     status?: string,
     ageRating?: string
   } = {}): Observable<AnimeResponse> {
-    let url = `${this.API_URL}/anime?page=${page}`;
+    let url = `${this.apiUrl}/anime?page=${page}`;
     
     if (filters.search) {
       url += `&search=${encodeURIComponent(filters.search)}`;
@@ -33,12 +33,12 @@ export class AnimeService {
     return this.http.get<AnimeResponse>(url);
   }
 
-  getAnimeById(id: number): Observable<Anime> {
-    return this.http.get<Anime>(`${this.API_URL}/anime/${id}`);
+  getAnimeById(id: string): Observable<Anime> {
+    return this.http.get<any>(`${this.apiUrl}/anime/${id}`);
   }
 
   getWatchedAnimes(): Observable<Anime[]> {
-    return this.http.get<Anime[]>(`${this.API_URL}/anime/watched`);
+    return this.http.get<Anime[]>(`${this.apiUrl}/anime/watched`);
   }
 
   searchAnimes(query: string): Observable<Anime | null> {
@@ -48,14 +48,14 @@ export class AnimeService {
   }
 
   getUserWatchedAnimes(username: string) {
-    return this.http.get<Anime[]>(`${this.API_URL}/anime/${username}/watched`);
+    return this.http.get<Anime[]>(`${this.apiUrl}/anime/${username}/watched`);
   }
 
   markAnimeAsWatched(animeId: number): Observable<Anime> {
-    return this.http.post<Anime>(`${this.API_URL}/anime/${animeId}/watched`, {});
+    return this.http.post<Anime>(`${this.apiUrl}/anime/${animeId}/watched`, {});
   }
 
   getTogether(usernames: string): Observable<Anime[]> {
-    return this.http.get<Anime[]>(`${this.API_URL}/anime/together/${usernames}`);
+    return this.http.get<Anime[]>(`${this.apiUrl}/anime/together/${usernames}`);
   }
 } 

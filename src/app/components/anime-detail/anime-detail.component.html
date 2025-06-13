@@ -1,59 +1,81 @@
-<div class="anime-detail" *ngIf="anime">
-  <div class="header">
-    <button class="back-button" [routerLink]="['/']">
+<div class="detail-container">
+  <div *ngIf="loading" class="loading">
+    <i class="fas fa-spinner fa-spin"></i>
+    <p>{{ 'detail.loading' | translate }}</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <i class="fas fa-exclamation-circle"></i>
+    <p>{{ error }}</p>
+    <button class="back-button" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i>
       {{ 'detail.back' | translate }}
     </button>
   </div>
 
-  <div class="content" *ngIf="!loading && !error">
-    <div class="main-info">
+  <div *ngIf="anime && !loading && !error" class="anime-detail">
+    <div class="content"
+      [ngStyle]="{'background-image': anime.coverImage ? 'url(' + anime.coverImage + ')' : 'none'}"
+    >
+      <button class="zoom-button" (click)="showCoverModal = true" *ngIf="anime.coverImage">
+        <i class="fas fa-search-plus"></i>
+      </button>
+
       <div class="poster">
-        <img [src]="anime.poster" [alt]="anime.title" class="poster-image">
+        <img [src]="anime.poster" [alt]="anime.title" />
       </div>
+
       <div class="info">
-        <h1>{{ anime.title }}</h1>
-        <h2 *ngIf="anime.title_jp">{{ anime.title_jp }}</h2>
-        
-        <div class="meta-info">
-          <div class="info-item" *ngIf="anime.average_rating">
-            <span class="label">{{ 'detail.rating' | translate }}</span>
-            <span class="value">★ {{ parseFloat(anime.average_rating) | number:'1.1-1' }}</span>
-          </div>
-          
-          <div class="info-item" *ngIf="anime.episode_count">
-            <span class="label">{{ 'detail.episodes' | translate }}</span>
-            <span class="value">{{ anime.episode_count }}</span>
-          </div>
-          
-          <div class="info-item">
-            <span class="label">{{ 'detail.status' | translate }}</span>
-            <span class="value">{{ anime.status }}</span>
-          </div>
-          
-          <div class="info-item" *ngIf="anime.start_date">
-            <span class="label">{{ 'detail.aired' | translate }}</span>
-            <span class="value">
-              {{ anime.start_date | date }}
-              <ng-container *ngIf="anime.end_date">
-                {{ 'detail.to' | translate }} {{ anime.end_date | date }}
-              </ng-container>
-            </span>
-          </div>
+        <h1>{{anime.title}}</h1>
+
+        <div class="meta">
+          <p>
+            <i class="fas fa-star"></i>
+            <strong>{{ 'detail.rating' | translate }}:</strong>
+            {{anime.average_rating}} / 100
+          </p>
+          <p>
+            <i class="fas fa-calendar-alt"></i>
+            <strong>{{ 'detail.aired' | translate }}:</strong>
+            {{anime.start_date | date:'yyyy'}}
+          </p>
+          <p>
+            <i class="fas fa-film"></i>
+            <strong>{{ 'detail.episodes' | translate }}:</strong>
+            {{anime.episode_count}}
+          </p>
+          <p>
+            <i class="fas fa-clock"></i>
+            <strong>{{ 'detail.duration' | translate }}:</strong>
+            {{anime.episode_length}}
+          </p>
+          <p>
+            <i class="fas fa-tag"></i>
+            <strong>{{ 'detail.status' | translate }}:</strong>
+            {{anime.status}}
+          </p>
+          <!-- <p>
+            <i class="fas fa-theater-masks"></i>
+            <strong>{{ 'detail.genres' | translate }}:</strong>
+            {{anime.genres?.join(', ')}}
+          </p> -->
+        </div>
+
+        <div class="synopsis">
+          <h2>
+            <i class="fas fa-book-open"></i>
+            {{ 'detail.synopsis' | translate }}
+          </h2>
+          <p>{{anime.description}}</p>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="synopsis" *ngIf="anime.description">
-      <h3>{{ 'detail.synopsis' | translate }}</h3>
-      <p>{{ anime.description }}</p>
+  <!-- Modal para la imagen de portada -->
+  <app-modal [visible]="showCoverModal" (closed)="showCoverModal = false">
+    <div class="modal-body cover-modal-body">
+      <img [src]="anime?.coverImage" [alt]="anime?.title" class="full-cover-image">
     </div>
-  </div>
-
-  <div *ngIf="loading" class="loading">
-    {{ 'loading' | translate }}
-  </div>
-
-  <div *ngIf="error" class="error">
-    {{ 'detail.error' | translate }}
-  </div>
+  </app-modal>
 </div> 

@@ -17,6 +17,7 @@ export class TranslationService {
   private translations: { [key in Language]: Translations } = {
     en: {
       // General
+      'home': 'Home',
       'loading': 'Loading...',
       'anime': 'Anime',
       'cancel': 'Cancel',
@@ -28,7 +29,7 @@ export class TranslationService {
       'header.login': 'Login',
       'header.logout': 'Logout',
       'header.favorites': 'Watched Animes',
-      'header.profile': 'Profile',
+      'header.profile': 'My Profile',
       'header.together': 'Together',
       
       // Login
@@ -72,14 +73,14 @@ export class TranslationService {
       'home.search.label': 'Search',
       'home.search.placeholder': 'Type the name of an anime...',
       'home.search.button': 'Search',
-      'home.filter.status': 'Status:',
+      'home.filter.status': 'Status',
       'home.filter.status.all': 'All',
       'home.filter.status.current': 'Currently Airing',
       'home.filter.status.finished': 'Finished',
       'home.filter.status.upcoming': 'Upcoming',
       'home.filter.status.unreleased': 'Unreleased',
       'home.filter.status.tba': 'TBA',
-      'home.filter.age': 'Age Rating:',
+      'home.filter.age': 'Age Rating',
       'home.filter.age.all': 'All',
       'home.filter.age.g': 'G - All Ages',
       'home.filter.age.pg': 'PG - Children',
@@ -94,10 +95,10 @@ export class TranslationService {
 
       // Anime Detail
       'detail.back': 'Back to List',
-      'detail.rating': 'Rating:',
-      'detail.episodes': 'Episodes:',
-      'detail.status': 'Status:',
-      'detail.aired': 'Aired:',
+      'detail.rating': 'Rating',
+      'detail.episodes': 'Episodes',
+      'detail.status': 'Status',
+      'detail.aired': 'Aired',
       'detail.to': 'to',
       'detail.synopsis': 'Synopsis',
       'detail.error': 'Error loading anime details. Please try again later.',
@@ -126,6 +127,7 @@ export class TranslationService {
       'profile.watched.title': 'Watched Animes',
     },
     es: {
+      'home': 'Inicio',
       'loading': 'Cargando...',
       'anime': 'Anime',
       'cancel': 'Cancelar',
@@ -137,7 +139,7 @@ export class TranslationService {
       'header.login': 'Iniciar Sesión',
       'header.logout': 'Cerrar Sesión',
       'header.favorites': 'Animes Vistos',
-      'header.profile': 'Perfil',
+      'header.profile': 'Mi Perfil',
       'header.together': 'Juntos',
       
       // Login
@@ -181,14 +183,14 @@ export class TranslationService {
       'home.search.label': 'Buscar',
       'home.search.placeholder': 'Escribe el nombre de un anime...',
       'home.search.button': 'Buscar',
-      'home.filter.status': 'Estado:',
+      'home.filter.status': 'Estado',
       'home.filter.status.all': 'Todos',
       'home.filter.status.current': 'En Emisión',
       'home.filter.status.finished': 'Finalizado',
       'home.filter.status.upcoming': 'Próximamente',
       'home.filter.status.unreleased': 'No Publicado',
       'home.filter.status.tba': 'Por Anunciar',
-      'home.filter.age': 'Clasificación por Edad:',
+      'home.filter.age': 'Clasificación por Edad',
       'home.filter.age.all': 'Todas',
       'home.filter.age.g': 'G - Todas las Edades',
       'home.filter.age.pg': 'PG - Niños',
@@ -203,10 +205,10 @@ export class TranslationService {
 
       // Anime Detail
       'detail.back': 'Volver a la Lista',
-      'detail.rating': 'Calificación:',
-      'detail.episodes': 'Episodios:',
-      'detail.status': 'Estado:',
-      'detail.aired': 'Emitido:',
+      'detail.rating': 'Calificación',
+      'detail.episodes': 'Episodios',
+      'detail.status': 'Estado',
+      'detail.aired': 'Emitido',
       'detail.to': 'hasta',
       'detail.synopsis': 'Sinopsis',
       'detail.error': 'Error al cargar los detalles del anime. Por favor intente más tarde.',
@@ -236,6 +238,7 @@ export class TranslationService {
     },
     ja: {
       // General
+      'home': 'ホーム',
       'loading': '読み込み中...',
       'anime': 'アニメ',
       'cancel': 'キャンセル',
@@ -247,7 +250,7 @@ export class TranslationService {
       'header.login': 'ログイン',
       'header.logout': 'ログアウト',
       'header.favorites': '視聴済みアニメ',
-      'header.profile': 'プロフィール',
+      'header.profile': 'マイプロフィール',
       'header.together': '一緒に',
 
       // Login
@@ -291,14 +294,14 @@ export class TranslationService {
       'home.search.label': '検索',
       'home.search.placeholder': 'アニメの名前を入力...',
       'home.search.button': '検索',
-      'home.filter.status': 'ステータス:',
+      'home.filter.status': 'ステータス',
       'home.filter.status.all': 'すべて',
       'home.filter.status.current': '放送中',
       'home.filter.status.finished': '完結',
       'home.filter.status.upcoming': '近日公開',
       'home.filter.status.unreleased': '未公開',
       'home.filter.status.tba': '未定',
-      'home.filter.age': '年齢制限:',
+      'home.filter.age': '年齢制限',
       'home.filter.age.all': 'すべて',
       'home.filter.age.g': 'G - 全年齢対象',
       'home.filter.age.pg': 'PG - 子供向け',
@@ -313,10 +316,10 @@ export class TranslationService {
 
       // Anime Detail
       'detail.back': 'リストに戻る',
-      'detail.rating': '評価:',
-      'detail.episodes': '話数:',
-      'detail.status': 'ステータス:',
-      'detail.aired': '放送期間:',
+      'detail.rating': '評価',
+      'detail.episodes': '話数',
+      'detail.status': 'ステータス',
+      'detail.aired': '放送期間',
       'detail.to': 'から',
       'detail.synopsis': 'あらすじ',
       'detail.error': 'アニメの詳細を読み込めませんでした。後ほどお試しください。',

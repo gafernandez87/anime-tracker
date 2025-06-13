@@ -1,60 +1,56 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, ActivatedRoute } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { AnimeService } from '../../services/anime.service';
 import { Anime } from '../../interfaces/anime.interface';
 import { TranslatePipe } from '../../pipes/translate.pipe';
+import { ModalComponent } from '../shared/modal/modal.component';
 
 @Component({
   selector: 'app-anime-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink, TranslatePipe],
+  imports: [CommonModule, TranslatePipe, ModalComponent],
   templateUrl: './anime-detail.component.html',
   styleUrls: ['./anime-detail.component.scss']
 })
-export class AnimeDetailComponent implements OnInit, OnDestroy {
+export class AnimeDetailComponent implements OnInit {
   anime: Anime | null = null;
   loading = true;
-  error = false;
-  private destroy$ = new Subject<void>();
+  error = '';
+  showCoverModal = false;
 
   constructor(
     private route: ActivatedRoute,
-    private animeService: AnimeService
+    private animeService: AnimeService,
+    private location: Location
   ) {}
 
   ngOnInit() {
-    this.route.params
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(params => {
-        if (params['id']) {
-          this.loadAnime(Number(params['id']));
-        }
-      });
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.loadAnime(id);
+    }
   }
 
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
-  private loadAnime(id: number) {
+  private loadAnime(id: string) {
     this.loading = true;
-    this.error = false;
+    this.error = '';
 
-    this.animeService.getAnimeById(id)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (anime) => {
-          this.anime = anime;
-          this.loading = false;
-        },
-        error: () => {
-          this.error = true;
-          this.loading = false;
-        }
-      });
+    this.animeService.getAnimeById(id).subscribe({
+      next: (anime) => {
+        this.anime = anime;
+        this.loading = false;
+      },
+      error: (error) => {
+        this.error = error.message || 'anime.detail.error';
+        this.loading = false;
+      }
+    });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   parseFloat(value: string): number {

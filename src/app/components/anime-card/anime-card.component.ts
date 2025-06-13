@@ -5,6 +5,7 @@ import { Anime } from '../../interfaces/anime.interface';
 import { RouterLink } from '@angular/router';
 import { AnimeService } from '../../services/anime.service';
 import { AuthService } from '../../services/auth.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-anime-card',
@@ -21,7 +22,11 @@ export class AnimeCardComponent implements OnInit{
 
   loading: boolean = false;
 
-  constructor(private authService: AuthService, private animeService: AnimeService) {}
+  constructor(
+    private authService: AuthService,
+    private animeService: AnimeService,
+    private alertService: AlertService,
+  ) {}
 
   ngOnInit(): void {
     this.userLoggedIn = this.authService.isAuthenticated();
@@ -38,9 +43,11 @@ export class AnimeCardComponent implements OnInit{
         next: () => {
           this.watched = !this.watched;
           this.loading = false;
+          this.alertService.success(`${this.anime?.title} ${this.watched ? 'added' : 'removed'} from watched list`);
         },
         error: (error) => {
           this.loading = false;
+          this.alertService.error(error.error?.message || 'Error adding anime to favorites');
           console.error('Error adding anime to favorites:', error);
         }
       });

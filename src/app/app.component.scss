@@ -113,4 +113,10 @@
       background-color: #2980b9;
     }
   }
+}
+
+.app-container {
+  padding-top: 64px; // Height of the header
+  min-height: 100vh;
+  background-color: var(--background-color);
 } 

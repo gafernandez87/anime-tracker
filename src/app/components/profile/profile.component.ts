@@ -31,6 +31,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   me: User | null = null;
   loading = false;
   error = '';
+  isPublic = false;
   private destroy$ = new Subject<void>();
 
   // Avatar
@@ -79,6 +80,18 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  togglePublic(){
+    this.isPublic = !this.isPublic;
+    this.authService.updateIsPublic(this.isPublic).subscribe({
+      next: () => {
+        this.alertService.success('Watched list updated successfully');
+      },
+      error: (error) => {
+        this.alertService.error(error.error?.message || 'Error updating watched list');
+      }
+    });
   }
 
   private loadUserData() {
