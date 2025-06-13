@@ -26,6 +26,10 @@
         </div>
       </div>
       
+      <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="currentTheme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'">
+        <i class="fas" [class.fa-sun]="currentTheme === 'dark'" [class.fa-moon]="currentTheme === 'light'"></i>
+      </button>
+      
       <ng-template #loginButton>
         <a routerLink="/login" class="login-btn">
           {{ 'header.login' | translate }}

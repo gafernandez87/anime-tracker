@@ -8,8 +8,8 @@ import { AnimeResponse, Anime } from '../interfaces/anime.interface';
   providedIn: 'root'
 })
 export class AnimeService {
-  // private readonly API_URL = 'http://localhost:3000/api';
-  private readonly API_URL = 'https://anime-tracker-be.onrender.com/api';
+  private readonly API_URL = 'http://localhost:3000/api';
+  // private readonly API_URL = 'https://anime-tracker-be.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 

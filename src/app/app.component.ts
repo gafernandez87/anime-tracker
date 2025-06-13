@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
-import { CommonModule } from '@angular/common';
+import { AlertContainerComponent } from './components/shared/alert-container/alert-container.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, CommonModule],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    HeaderComponent,
+    AlertContainerComponent
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {} 
+export class AppComponent {
+  title = 'anime-tracker';
+} 

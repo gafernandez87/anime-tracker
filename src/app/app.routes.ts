@@ -5,9 +5,9 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { WatchedComponent } from './components/watched/watched.component';
 import { AuthGuard } from './interceptors/auth.guard';
-import { ProfileComponent } from './components/profile/profile.component';
 import { PublicWatchedComponent } from './components/public-watched/public-watched.component';
 import { TogetherComponent } from './components/together/together.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 export const routes: Routes = [
   {

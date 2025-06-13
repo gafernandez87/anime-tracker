@@ -4,14 +4,14 @@
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
+  cursor: pointer;
 
-  &.watched{
-    // border: 3px solid var(--watched-color, #af4c4c);
+  &.watched {
     filter: drop-shadow(0 0 5px var(--watched-color, #af4c4c));
   }
   
   &:hover {
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--card-hover-shadow)
   }
 
   .anime-link {
@@ -71,6 +71,7 @@
 
     .button {
       margin-top: 10px;
+      font-size: 14px;
 
       &.watched {
         background-color: var(--watched-color, #af4c4c);

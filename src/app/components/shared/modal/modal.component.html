@@ -1,0 +1,7 @@
+<div class="modal-backdrop" *ngIf="visible" (click)="close()"></div>
+<div class="modal" *ngIf="visible">
+  <div class="modal-content">
+    <button class="close-btn" (click)="close()">&times;</button>
+    <ng-content></ng-content>
+  </div>
+</div>

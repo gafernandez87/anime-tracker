@@ -1,3 +1,159 @@
-<div class="signup-container">
-  Profile
-</div> 
+<div class="profile-container">
+  <div class="profile-header">
+    <div class="avatar-section">
+      <div class="avatar-wrapper" (click)="showAvatarModal = true">
+        <img [src]="'assets/avatars/' + me?.avatar + '.webp'" [alt]="me?.username" class="avatar-image"/>
+        <div class="avatar-overlay">
+          <i class="fas fa-camera"></i>
+          <span>{{ 'profile.avatar.title' | translate }}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="user-info">
+      <h1>{{me?.username}}</h1>
+      <p class="email">{{me?.email}}</p>
+      <p class="bio">{{me?.bio || ('profile.no.bio' | translate)}}</p>
+    </div>
+    <div class="actions">
+      <button class="edit-btn" (click)="showProfileModal = true">
+        <i class="fas fa-edit"></i>
+        {{ 'profile.edit' | translate }}
+      </button>
+      <button class="password-btn" (click)="showPasswordModal = true">
+        <i class="fas fa-key"></i>
+        {{ 'profile.change.password' | translate }}
+      </button>
+    </div>
+  </div>
+
+  <div class="watched-section">
+    <h2>{{ 'profile.watched.title' | translate }}</h2>
+    <div class="anime-grid" *ngIf="!loading && !error">
+      <app-anime-card 
+        *ngFor="let anime of watchedAnimes" 
+        [anime]="anime" 
+        [watched]="true">
+      </app-anime-card>
+    </div>
+    <app-spinner *ngIf="loading"></app-spinner>
+    <p class="error-message" *ngIf="error">{{error}}</p>
+    <p class="empty-message" *ngIf="!loading && !error && watchedAnimes.length === 0">
+      {{ 'profile.watched.empty' | translate }}
+    </p>
+  </div>
+</div>
+
+<!-- Modal de Avatar -->
+<app-modal [visible]="showAvatarModal" (closed)="showAvatarModal = false">
+  <div class="modal-header">
+    <h2>{{ 'profile.avatar.select' | translate }}</h2>
+  </div>
+  <div class="modal-body">
+    <div class="avatar-grid">
+      <div class="avatar-option" 
+           *ngFor="let avatar of availableAvatars"
+           (click)="selectAvatar(avatar)"
+           [class.selected]="selectedAvatar === avatar">
+        <img [src]="'assets/avatars/' + avatar + '.webp'" [alt]="'Avatar ' + avatar">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="save-btn" (click)="changeAvatar()">
+      {{ 'save' | translate }}
+    </button>
+  </div>
+</app-modal>
+
+<!-- Modal de Edición de Perfil -->
+<app-modal [visible]="showProfileModal" (closed)="showProfileModal = false">
+  <div class="modal-header">
+    <h2>{{ 'profile.edit' | translate }}</h2>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="profileForm" (ngSubmit)="updateProfile()" class="edit-form">
+      <div class="form-group">
+        <label for="username">{{ 'signup.username' | translate }}</label>
+        <input id="username" type="text" formControlName="username">
+        <span class="error-message" *ngIf="getProfileError('username')">
+          {{ getProfileError('username') | translate }}
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">{{ 'signup.email' | translate }}</label>
+        <input id="email" type="email" [value]="me?.email" [disabled]="true">
+        <span class="error-message" *ngIf="getProfileError('email')">
+          {{ getProfileError('email') | translate }}
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="bio">{{ 'profile.bio' | translate }}</label>
+        <textarea id="bio" formControlName="bio" rows="3"></textarea>
+        <span class="error-message" *ngIf="getProfileError('bio')">
+          {{ getProfileError('bio') | translate }}
+        </span>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="profileForm.invalid || profileForm.pristine">
+          {{ 'save' | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</app-modal>
+
+<!-- Modal de Cambio de Contraseña -->
+<app-modal [visible]="showPasswordModal" (closed)="showPasswordModal = false">
+  <div class="modal-header">
+    <h2>{{ 'profile.change.password' | translate }}</h2>
+  </div>
+  <div class="modal-body">
+    <form class="edit-form" [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+      <div class="form-group">
+        <label for="currentPassword">{{ 'profile.password.current' | translate }}</label>
+        <input 
+          id="currentPassword" 
+          type="password" 
+          formControlName="currentPassword"
+          [placeholder]="'profile.password.current.placeholder' | translate">
+        <span class="error-message" *ngIf="getPasswordError('currentPassword')">
+          {{ getPasswordError('currentPassword') | translate }}
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="newPassword">{{ 'profile.password.new' | translate }}</label>
+        <input 
+          id="newPassword" 
+          type="password" 
+          formControlName="newPassword"
+          [placeholder]="'profile.password.new.placeholder' | translate">
+        <span class="error-message" *ngIf="getPasswordError('newPassword')">
+          {{ getPasswordError('newPassword') | translate }}
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">{{ 'profile.password.confirm' | translate }}</label>
+        <input 
+          id="confirmPassword" 
+          type="password" 
+          formControlName="confirmPassword"
+          [placeholder]="'profile.password.confirm.placeholder' | translate">
+        <span class="error-message" *ngIf="getPasswordError('confirmPassword')">
+          {{ getPasswordError('confirmPassword') | translate }}
+        </span>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="passwordForm.invalid">
+          {{ 'save' | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</app-modal>

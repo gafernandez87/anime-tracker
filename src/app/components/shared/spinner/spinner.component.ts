@@ -26,9 +26,12 @@ import { TranslatePipe } from '../../../pipes/translate.pipe';
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(var(--background-color-rgb), 0.8);
-        z-index: 1000;
+        z-index: 999999;
         justify-content: center;
+        height: 100%;
+        width: 100%;
+        background-color: black;
+        opacity: .7;
       }
     }
 
@@ -56,5 +59,5 @@ import { TranslatePipe } from '../../../pipes/translate.pipe';
 export class SpinnerComponent {
   @Input() text = 'loading';
   @Input() showText = true;
-  @Input() overlay = false;
+  @Input() overlay = true;
 } 

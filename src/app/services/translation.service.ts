@@ -18,6 +18,10 @@ export class TranslationService {
     en: {
       // General
       'loading': 'Loading...',
+      'anime': 'Anime',
+      'cancel': 'Cancel',
+      'save': 'Save',
+      'edit': 'Edit',
 
       // Header
       'app.title': 'Anime Tracker',
@@ -99,14 +103,34 @@ export class TranslationService {
       'detail.error': 'Error loading anime details. Please try again later.',
 
       // Anime card
-      'add.wathced': 'Mark as watched',
+      'add.watched': 'Mark as watched',
       'remove.watched': 'Remove from watched',
 
       // Watched Component
       'watched.public.list': 'Make list public',
+
+      // Profile
+      'profile.avatar.title': 'Change Avatar',
+      'profile.avatar.select': 'Select an avatar',
+      'profile.bio': 'About me',
+      'profile.no.bio': 'No bio',
+      'profile.change.password': 'Change Password',
+      'profile.password.current': 'Current Password',
+      'profile.password.current.placeholder': 'Enter your current password',
+      'profile.password.new': 'New Password',
+      'profile.password.new.placeholder': 'Enter your new password',
+      'profile.password.confirm': 'Confirm Password',
+      'profile.password.confirm.placeholder': 'Confirm your new password',
+      'profile.password.change': 'Change Password',
+      'profile.edit': 'Edit Profile',
+      'profile.watched.title': 'Watched Animes',
     },
     es: {
       'loading': 'Cargando...',
+      'anime': 'Anime',
+      'cancel': 'Cancelar',
+      'save': 'Guardar',
+      'edit': 'Editar',
 
       // Header
       'app.title': 'Anime Tracker',
@@ -193,10 +217,30 @@ export class TranslationService {
 
       // Watched Component
       'watched.public.list': 'Hacer lista pública',
+
+      // Profile
+      'profile.avatar.title': 'Cambiar Avatar',
+      'profile.avatar.select': 'Seleccionar un avatar',
+      'profile.bio': 'Sobre mí',
+      'profile.no.bio': 'Sin bio',
+      'profile.change.password': 'Cambiar Contraseña',
+      'profile.password.current': 'Contraseña Actual',
+      'profile.password.current.placeholder': 'Ingresa tu contraseña actual',
+      'profile.password.new': 'Nueva Contraseña',
+      'profile.password.new.placeholder': 'Ingresa tu nueva contraseña',
+      'profile.password.confirm': 'Confirmar Contraseña',
+      'profile.password.confirm.placeholder': 'Confirma tu nueva contraseña',
+      'profile.password.change': 'Cambiar Contraseña',
+      'profile.edit': 'Editar Perfil',
+      'profile.watched.title': 'Animes Vistos',
     },
     ja: {
       // General
       'loading': '読み込み中...',
+      'anime': 'アニメ',
+      'cancel': 'キャンセル',
+      'save': '保存',
+      'edit': '編集',
 
       // Header
       'app.title': 'アニメトラッカー',
@@ -283,6 +327,22 @@ export class TranslationService {
 
       // Watched Component
       'watched.public.list': 'リストを公開する',
+
+      // Profile
+      'profile.avatar.title': 'アバターを変更',
+      'profile.avatar.select': 'アバターを選択',
+      'profile.bio': '自己紹介',
+      'profile.no.bio': '自己紹介がありません',
+      'profile.change.password': 'パスワードを変更',
+      'profile.password.current': '現在のパスワード',
+      'profile.password.current.placeholder': '現在のパスワードを入力',
+      'profile.password.new': '新しいパスワード',
+      'profile.password.new.placeholder': '新しいパスワードを入力',
+      'profile.password.confirm': 'パスワードを確認',
+      'profile.password.confirm.placeholder': '新しいパスワードを確認',
+      'profile.password.change': 'パスワードを変更',
+      'profile.edit': 'プロフィールを編集',
+      'profile.watched.title': '視聴済みアニメ',
     }
 
   };

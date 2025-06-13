@@ -15,6 +15,8 @@ export interface User {
   username: string;
   email: string;
   watched_public: boolean;
+  avatar: number;
+  bio: string;
 }
 
 export interface LoginResponse {

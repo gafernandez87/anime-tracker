@@ -29,6 +29,8 @@ type AnimeWatched = Anime & { isWatched: boolean; };
 })
 export class HomeComponent implements OnInit, OnDestroy {
   animes: AnimeWatched[] = [];
+  myWatched: AnimeWatched[] = [];
+  
   loading = false;
   error = false;
   currentPage = 1;
@@ -70,8 +72,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     return documentHeight - scrollPosition < this.scrollThreshold;
   }
 
-  loadAnimes(filters: AnimeFilters = {}) {
-    this.loading = true;
+  loadAnimes(filters: AnimeFilters = {}, showLoading = true) {
+    if(showLoading) this.loading = true;
     this.error = false;
     this.currentFilters = filters;
 
@@ -85,12 +87,21 @@ export class HomeComponent implements OnInit, OnDestroy {
             : [...this.animes, ...pageData];
           this.hasMorePages = this.currentPage < response.pagination.totalPages;
           this.totalAnimes = response.pagination.total;
-          this.loading = false;
+          
+          this.updateFavorites();
+
+          if(showLoading) this.loading = false;
         },
         error: () => {
           this.error = true;
-          this.loading = false;
+          if(showLoading) this.loading = false;
         }
+      });
+  }
+
+  private updateFavorites() {
+    this.animes = this.animes.map(anime => {
+        return { ...anime, isWatched: this.myWatched.some(anim => anim.id === anime.id) };
       });
   }
 
@@ -98,10 +109,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.animeService.getWatchedAnimes()
       .subscribe({
         next: (watchedAnimes: Anime[]) => {
-          this.animes = this.animes.map(anime => {
-            const isWatched = watchedAnimes.some(anim => anim.id === anime.id);
-            return { ...anime, isWatched };
-          });
+          this.myWatched = watchedAnimes.map(anime => ({ ...anime, isWatched: true } as AnimeWatched));
+          this.updateFavorites();
         },
         error: (error) => {
           console.error('Error loading favorite animes:', error);
@@ -112,7 +121,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private loadMore() {
     if (!this.loading && this.hasMorePages) {
       this.currentPage++;
-      this.loadAnimes(this.currentFilters);
+      this.loadAnimes(this.currentFilters, false);
     }
   }
 
