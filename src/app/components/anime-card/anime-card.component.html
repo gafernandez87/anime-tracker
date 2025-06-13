@@ -13,7 +13,7 @@
           {{ parseFloat(anime.average_rating) | number:'1.1-1' }}
         </span>
       </div>
-      <button *ngIf="userLoggedIn" 
+      <button *ngIf="showButton && userLoggedIn" 
         class="button" [class.watched]="watched" 
         (click)="toggleWatched()"
       >

@@ -43,6 +43,10 @@ export class AuthService {
       );
   }
 
+  checkUsername(username: string = '', userId?: number): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}/auth/username-check/`, { username, userId});
+  }
+
   logout(): void {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_KEY);

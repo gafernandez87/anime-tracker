@@ -17,6 +17,7 @@ export class SignupComponent {
   loading = false;
   error = '';
   showPassword = false;
+  usernameTaken = false;
 
   constructor(
     private fb: FormBuilder,
@@ -53,6 +54,14 @@ export class SignupComponent {
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
+  }
+
+  onUsernameChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    // check if username is already taken
+    this.authService.checkUsername(input.value).subscribe((res) => {
+      this.usernameTaken = res;
+    });
   }
 
   get username() { return this.signupForm.get('username'); }

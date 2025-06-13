@@ -31,11 +31,15 @@ export const routes: Routes = [
     component: AnimeDetailComponent
   },
   {
-    path: ':username/watched',
+    path: 'watched/:username',
     component: PublicWatchedComponent
   },
   {
-    path: 'together',
+    path: 'match',
+    component: TogetherComponent
+  },
+  {
+    path: 'match/:username',
     component: TogetherComponent
   },
   { path: '**', redirectTo: '/home' }

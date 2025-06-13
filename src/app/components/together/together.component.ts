@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-together',
   standalone: true,
-  imports: [CommonModule, AnimeCardComponent,],
+  imports: [CommonModule, AnimeCardComponent, TranslatePipe],
   templateUrl: './together.component.html',
   styleUrls: ['./together.component.scss']
 })
@@ -19,23 +19,25 @@ export class TogetherComponent implements OnInit {
   watchedAnimes: Anime[] = [];
   loading = false;
   error = '';
-
-  username: string | null = null;
   userToAdd: string = '';
 
   userList: string[] = [];
 
-  constructor(private authService: AuthService,private animeService: AnimeService) {}
+  constructor(private authService: AuthService, private animeService: AnimeService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
 
-    // this.username = username;
     this.loading = true;
     this.error = '';
 
+    const username = this.route.snapshot.paramMap.get('username');
+    if(username) {
+      this.userList = username.split(',');
+    }
+
     const me = this.authService.getUser();
     if(me) {
-      this.userList.push(me.username)
+      this.addToList(me.username)
     }
   }
 
@@ -57,8 +59,20 @@ export class TogetherComponent implements OnInit {
   }
 
   addUser(){
-    this.userList.push(this.userToAdd);
+    this.addToList(this.userToAdd);
     this.userToAdd = '';
+  }
+
+  removeUser(username: string) {
+    this.userList = this.userList.filter(user => user !== username);
+  }
+
+  private addToList(username: string) {
+    // check if username is already in the list
+    if(this.userList.includes(username)) {
+      return;
+    }
+    this.userList.push(username);
   }
 
 } 

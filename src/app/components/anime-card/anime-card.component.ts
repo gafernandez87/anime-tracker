@@ -17,6 +17,7 @@ import { AlertService } from '../../services/alert.service';
 export class AnimeCardComponent implements OnInit{
   @Input() anime?: Anime;
   @Input() watched: boolean = false;
+  @Input() showButton: boolean = true;
 
   userLoggedIn: boolean = false;
 

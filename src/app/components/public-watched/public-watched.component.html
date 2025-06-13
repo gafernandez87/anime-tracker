@@ -1,9 +1,19 @@
-<div class="container">
+<div class="container" *ngIf="!accountPrivate">
   <div class="signup-container">
-    <h1>{{username}} {{ 'header.favorites' | translate }}</h1>
+    <h1>{{username}}: {{watchedAnimes.length || 0}} {{ 'header.favorites' | translate }}</h1>
+    <div *ngIf="showCompare" class="compare">
+      <button routerLink="/match/{{myUsername}},{{username}}">{{ 'header.compare' | translate }}</button>
+    </div>
   </div>
 
+
   <div class="anime-container">
-    <app-anime-card *ngFor="let anime of watchedAnimes" [anime]="anime" [watched]="true"></app-anime-card>
+    <app-anime-card *ngFor="let anime of watchedAnimes" [anime]="anime" [watched]="true" [showButton]="false"></app-anime-card>
   </div>
 </div> 
+
+<div class="container" *ngIf="accountPrivate">
+  <div class="signup-container">
+    <h1>{{ 'watched.private.title' | translate }}</h1>
+  </div>
+</div>

@@ -1,19 +1,27 @@
 <div class="container">
-  <h1>Juntos</h1>
+  <h1>{{ 'together.title' | translate }}</h1>
+  <h5>{{ 'together.description' | translate }}</h5>
   <div class="setup-container">
     <div class="add-user">
-      <input type="text" class="input" 
-        placeholder="Escribe el nombre de otro usuario" [value]="userToAdd" 
-        (change)="updateUser($event)" 
-      />
-      <button class="button" (click)="addUser()">Agregar</button>
+      <div class="input-container">
+        <input type="text" class="input" 
+          placeholder="{{ 'together.add.user' | translate }}" 
+          [value]="userToAdd" 
+          (input)="updateUser($event)" 
+          (keydown.enter)="addUser()"
+        />
+        <button class="add-button" (click)="addUser()">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
     </div>
     <div class="user-list">
-      <span class="user-added" *ngFor="let user of userList">{{user}} <span>x</span></span>
-      <button class="button" [disabled]="userList.length < 2" (click)="compare()">Ver Animes en común</button>
+      <span class="user-added" *ngFor="let user of userList" (click)="removeUser(user)">{{user}} <span>x</span></span>
+      <button class="button" [disabled]="userList.length < 2" (click)="compare()">{{ 'together.compare' | translate }}</button>
     </div>
   </div>
 
+  <h2 *ngIf="watchedAnimes?.length">{{watchedAnimes.length || 0}} {{ 'together.animes.in.common' | translate }}</h2>
   <div class="anime-container">
     <app-anime-card *ngFor="let anime of watchedAnimes" [anime]="anime" [watched]="true"></app-anime-card>
   </div>

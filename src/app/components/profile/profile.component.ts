@@ -189,20 +189,29 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     try {
       this.loading = false;
-      this.authService.updateProfile(this.profileForm.value).subscribe({
-        next: (updatedUser) => {
-          if (updatedUser) {
-            this.me = updatedUser;
-            this.showProfileModal = false;
-            this.alertService.success('Profile updated successfully');
-          }
-          this.loading = false;
-        },
-        error: (error) => {
-          this.alertService.error(error.error?.message || 'Error updating profile');
-          this.loading = false;
+        // check if username is already taken
+      this.authService.checkUsername(this.profileForm?.value?.username, this.me?.id).subscribe((isTaken) => {
+        if(isTaken) {
+          this.alertService.error('Username already taken');
+          return;
+        } else {
+          this.authService.updateProfile(this.profileForm.value).subscribe({
+            next: (updatedUser) => {
+              if (updatedUser) {
+                this.me = updatedUser;
+                this.showProfileModal = false;
+                this.alertService.success('Profile updated successfully');
+              }
+              this.loading = false;
+            },
+            error: (error) => {
+              this.alertService.error(error.error?.message || 'Error updating profile');
+              this.loading = false;
+            }
+          });
         }
       });
+      
     } catch (error) {
       console.error('Error updating profile:', error);
       this.alertService.error('Error updating profile');

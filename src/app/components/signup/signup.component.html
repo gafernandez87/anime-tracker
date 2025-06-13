@@ -10,10 +10,12 @@
         formControlName="username"
         [placeholder]="'signup.username.placeholder' | translate"
         [class.invalid]="username?.invalid && username?.touched"
+        (change)="onUsernameChange($event)"
       >
-      <div class="error-message" *ngIf="username?.invalid && username?.touched">
+      <div class="error-message" *ngIf="usernameTaken || (username?.invalid && username?.touched)">
         <span *ngIf="username?.errors?.['required']">{{ 'signup.error.username.required' | translate }}</span>
         <span *ngIf="username?.errors?.['minlength']">{{ 'signup.error.username.minlength' | translate }}</span>
+        <span *ngIf="usernameTaken">{{ 'signup.error.username.taken' | translate }}</span>
       </div>
     </div>
 

@@ -19,7 +19,7 @@ export class TranslationService {
       // General
       'home': 'Home',
       'loading': 'Loading...',
-      'anime': 'Anime',
+      'anime': 'Animes',
       'cancel': 'Cancel',
       'save': 'Save',
       'edit': 'Edit',
@@ -68,6 +68,7 @@ export class TranslationService {
       'signup.login.link': 'Log in',
       'signup.password.show': 'Show password',
       'signup.password.hide': 'Hide password',
+      'signup.error.username.taken': 'This username is already taken',
       
       // Home
       'home.search.label': 'Search',
@@ -109,6 +110,8 @@ export class TranslationService {
 
       // Watched Component
       'watched.public.list': 'Make list public',
+      'header.compare': 'Compare with me',
+      'watched.private.title': 'This account is private',
 
       // Profile
       'profile.avatar.title': 'Change Avatar',
@@ -125,11 +128,18 @@ export class TranslationService {
       'profile.password.change': 'Change Password',
       'profile.edit': 'Edit Profile',
       'profile.watched.title': 'Watched Animes',
+
+      // Together
+      'together.title': 'Compare Animes',
+      'together.description': 'Compare the animes you have watched with other users',
+      'together.add.user': 'Type the name of another user',
+      'together.compare': 'Compare',
+      'together.animes.in.common': 'Animes in common',
     },
     es: {
       'home': 'Inicio',
       'loading': 'Cargando...',
-      'anime': 'Anime',
+      'anime': 'Animes',
       'cancel': 'Cancelar',
       'save': 'Guardar',
       'edit': 'Editar',
@@ -178,6 +188,7 @@ export class TranslationService {
       'signup.login.link': 'Inicia sesión',
       'signup.password.show': 'Mostrar contraseña',
       'signup.password.hide': 'Ocultar contraseña',
+      'signup.error.username.taken': 'Este nombre de usuario ya está en uso',
       
       // Home
       'home.search.label': 'Buscar',
@@ -219,6 +230,8 @@ export class TranslationService {
 
       // Watched Component
       'watched.public.list': 'Hacer lista pública',
+      'header.compare': 'Comparar conmigo',
+      'watched.private.title': 'Esta cuenta es privada',
 
       // Profile
       'profile.avatar.title': 'Cambiar Avatar',
@@ -235,6 +248,13 @@ export class TranslationService {
       'profile.password.change': 'Cambiar Contraseña',
       'profile.edit': 'Editar Perfil',
       'profile.watched.title': 'Animes Vistos',
+
+      // Together
+      'together.title': 'Comparar Animes',
+      'together.description': 'Compara los animes que has visto con otros usuarios',
+      'together.add.user': 'Escribe el nombre de otro usuario',
+      'together.compare': 'Comparar',
+      'together.animes.in.common': 'Animes en común',
     },
     ja: {
       // General
@@ -289,6 +309,7 @@ export class TranslationService {
       'signup.login.link': 'ログイン',
       'signup.password.show': 'パスワードを表示',
       'signup.password.hide': 'パスワードを非表示',
+      'signup.error.username.taken': 'このユーザー名はすでに使用されています',
 
       // Home
       'home.search.label': '検索',
@@ -330,6 +351,8 @@ export class TranslationService {
 
       // Watched Component
       'watched.public.list': 'リストを公開する',
+      'header.compare': '私と比較',
+      'watched.private.title': 'このアカウントは非公開です',
 
       // Profile
       'profile.avatar.title': 'アバターを変更',
@@ -346,6 +369,12 @@ export class TranslationService {
       'profile.password.change': 'パスワードを変更',
       'profile.edit': 'プロフィールを編集',
       'profile.watched.title': '視聴済みアニメ',
+
+      'together.title': 'アニメを比較',
+      'together.description': '他のユーザーと視聴済みアニメを比較',
+      'together.add.user': '他のユーザーの名前を入力',
+      'together.compare': '比較',
+      'together.animes.in.common': '視聴済みアニメ',
     }
 
   };
