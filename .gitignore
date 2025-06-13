@@ -10,7 +10,7 @@
 /.angular/
 
 # Environment files
-/src/environments/environment*.ts
+# /src/environments/environment*.ts
 
 # IDEs and editors
 /.idea/
